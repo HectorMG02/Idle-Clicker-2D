@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -20,8 +18,8 @@ public class BusinessUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameToBuyTMP;
     [SerializeField] private TextMeshProUGUI priceToBuyTMP;
     
-    [Header("Business Panel")] [SerializeField]
-    private GameObject businessDataPanel;
+    [Header("Business Panel")]
+    [SerializeField] private GameObject benefitsPanel;
     
     private Business _myBusiness;
     
@@ -126,6 +124,6 @@ public class BusinessUI : MonoBehaviour
 
     private void ActiveBusinessDataPanel(bool active)
     {
-        businessDataPanel.SetActive(active);
+        benefitsPanel.SetActive(active);
     }
 }
