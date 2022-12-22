@@ -19,13 +19,33 @@ public class BusinessUI : MonoBehaviour
     [SerializeField] private Image businessIcon;
     [SerializeField] private TextMeshProUGUI nameToBuyTMP;
     [SerializeField] private TextMeshProUGUI priceToBuyTMP;
-
-
+    
     [Header("Business Panel")] [SerializeField]
     private GameObject businessDataPanel;
-
+    
     private Business _myBusiness;
+    
+    public static event Action<Business> EventBusinessBought;
 
+
+    private void OnEnable()
+    {
+        EventBusinessBought += ResponseBusinessBought;
+    }
+
+    private void OnDisable()
+    {
+        EventBusinessBought -= ResponseBusinessBought;
+    }
+
+    private void ResponseBusinessBought(Business businessBought)
+    {
+        if (businessBought.Index + 1 == _myBusiness.Index)
+        {
+            ActiveBuyPanel(true);
+        }
+    }
+    
     private void Awake()
     {
         _myBusiness = GetComponent<Business>();
@@ -95,9 +115,12 @@ public class BusinessUI : MonoBehaviour
         {
             ActiveBuyPanel(false);
             ActiveBusinessDataPanel(true);
+            
             GameManager.Instance.SetNewBusiness(_myBusiness);
-
+            MoneyManager.Instance.RemoveMoney(GameManager.Instance.PriceNewBusiness);
             SaveManager.SaveBusiness();
+            
+            EventBusinessBought?.Invoke(_myBusiness);
         }
     }
 

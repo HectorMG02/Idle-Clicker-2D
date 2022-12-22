@@ -23,4 +23,14 @@ public class MoneyManager: MonoBehaviour
         CurrentMoney += amount;
         SaveGame.Save(MONEY_KEY, CurrentMoney);
     }
+    
+    
+    public void RemoveMoney(int amount)
+    {
+        if (CurrentMoney >= amount)
+        {
+            CurrentMoney -= amount;
+            SaveGame.Save(MONEY_KEY, CurrentMoney);
+        }
+    }
 }

@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [Header("Prices")]
     [SerializeField] private int priceFirstBusiness = 10;
     [SerializeField] private int priceBusinessMultiplier = 2;
+
+    [Header("Test")]
+    [SerializeField] private bool debug;
     
     public int PriceNewBusiness { get; set; }
     public Business[] AllBusiness => allBusiness;
@@ -24,6 +27,11 @@ public class GameManager : MonoBehaviour
         PriceNewBusiness = priceFirstBusiness;
 
         LoadAllBusiness();
+
+        if (debug)
+        {
+            SaveGame.Delete(SaveManager.SAVE_KEY);
+        }
     }
 
     private void LoadAllBusiness()
