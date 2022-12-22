@@ -18,6 +18,6 @@ public class InitialBusiness : MonoBehaviour
 
     public void GetProfit()
     {
-        MoneyManager.instance.AddMoney(_profit);
+        MoneyManager.Instance.AddMoney(_profit);
     }
 }

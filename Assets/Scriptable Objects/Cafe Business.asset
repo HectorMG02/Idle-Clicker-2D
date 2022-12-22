@@ -16,5 +16,5 @@ MonoBehaviour:
   floor_2: {fileID: 21300000, guid: 41b0a3d1765e74b9885b0d18a3c322be, type: 3}
   roof: {fileID: 21300000, guid: 6711dbefacc634a4b87e565b535217b9, type: 3}
   ID: cafeBusiness
-  businessName: Cafe Business
+  businessName: Cafe
   icon: {fileID: 2120357097, guid: b9458761e11cb4132ad72a6296c86e67, type: 3}
