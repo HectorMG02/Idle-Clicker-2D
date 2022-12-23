@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Text;
-using UnityEngine;
 
 namespace BayatGames.SaveGameFree.Serializers
 {

@@ -1,7 +1,6 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class BusinessUI : MonoBehaviour
@@ -18,8 +17,16 @@ public class BusinessUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameToBuyTMP;
     [SerializeField] private TextMeshProUGUI priceToBuyTMP;
     
-    [Header("Business Panel")]
-    [SerializeField] private GameObject benefitsPanel;
+
+    [Header("Profits Panel")]
+    [SerializeField] private GameObject profitsPanel;
+    [SerializeField] private Image businessImage;
+    [SerializeField] private TextMeshProUGUI timerTMP;
+    [SerializeField] private TextMeshProUGUI businessNameTMP;
+
+    [Header("Profit Progress Bar")]
+    [SerializeField] private Image profitBar;
+    [SerializeField] private TextMeshProUGUI profitTMP;
     
     private Business _myBusiness;
     
@@ -55,6 +62,16 @@ public class BusinessUI : MonoBehaviour
         LoadBusinessInformation();
     }
 
+    private void Update()
+    {
+        if (businessSo == null)
+        {
+            return;
+        }
+        
+        UpdateProfitValues();
+    }
+
     private void LoadBusinessInformation()
     {
         floor_1.sprite = businessSo.floor_1;
@@ -63,7 +80,10 @@ public class BusinessUI : MonoBehaviour
 
         businessIcon.sprite = businessSo.icon;
         nameToBuyTMP.text = businessSo.businessName;
-    }
+        
+        businessImage.sprite = businessSo.icon;
+        businessNameTMP.text = businessSo.businessName;
+    } 
 
     private void ShowBuyInformation()
     {
@@ -88,6 +108,26 @@ public class BusinessUI : MonoBehaviour
         }
     }
 
+    private void UpdateProfitValues()
+    {
+        if (!_myBusiness.Bought)
+        {
+            return;
+        }
+
+        timerTMP.text = _myBusiness.GetTimer();
+        profitBar.fillAmount = _myBusiness.GetProfitBarValue();
+
+        if (_myBusiness.TimeToGenerateProfit > 1)
+        {
+            profitTMP.text = $"${_myBusiness.Profit}";
+        }
+        else
+        {
+            profitTMP.text = $"${_myBusiness.Profit}/s";
+        }
+    }
+    
     private void ActiveBuyPanel(bool active)
     {
         buyPanel.SetActive(active);
@@ -115,7 +155,7 @@ public class BusinessUI : MonoBehaviour
             ActiveBusinessDataPanel(true);
             
             GameManager.Instance.SetNewBusiness(_myBusiness);
-            MoneyManager.Instance.RemoveMoney(GameManager.Instance.PriceNewBusiness);
+            MoneyManager.Instance.RemoveMoney(priceNewBusiness);
             SaveManager.SaveBusiness();
             
             EventBusinessBought?.Invoke(_myBusiness);
@@ -124,6 +164,6 @@ public class BusinessUI : MonoBehaviour
 
     private void ActiveBusinessDataPanel(bool active)
     {
-        benefitsPanel.SetActive(active);
+        profitsPanel.SetActive(active);
     }
 }

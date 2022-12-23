@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b335a5c7af46118e1fa38099c82e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MONEY_KEY: MY_MONEY
 --- !u!4 &99868503
 Transform:
   m_ObjectHideFlags: 0
@@ -289,6 +290,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 578665439}
     m_Modifications:
+    - target: {fileID: 2288567941731132154, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 2288567941731132154, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2833699547797640501, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
@@ -8417,13 +8426,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63e5a768ebb94011a490f132e1899fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 1
   allBusiness:
   - {fileID: 1018015714}
   - {fileID: 240748986}
   - {fileID: 1362608604}
   priceFirstBusiness: 10
   priceBusinessMultiplier: 2
-  debug: 0
+  initialProfit: 2
+  profitLevelMultiplier: 2
+  newBusinessProfitIncrement: 400
+  initialCost: 2
+  costUpdatePercentage: 2
+  timeToGenerateProfit: 2
+  timeToGenerateProfitMultiplier: 2
 --- !u!4 &513000899
 Transform:
   m_ObjectHideFlags: 0
@@ -9444,6 +9460,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 578665439}
     m_Modifications:
+    - target: {fileID: 2288567941731132154, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 2288567941731132154, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2833699547797640501, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -9541,6 +9565,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 578665439}
     m_Modifications:
+    - target: {fileID: 2288567941731132154, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 2288567941731132154, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2833699547797640501, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -9553,9 +9585,17 @@ PrefabInstance:
       propertyPath: index
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6453161107119019108, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7730683426433145216, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.000000059604645
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730683426433145216, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.63
       objectReference: {fileID: 0}
     - target: {fileID: 7779426613142453714, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_Name
@@ -9658,7 +9698,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: -1826897583
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &2833699548789620922
 RectTransform:

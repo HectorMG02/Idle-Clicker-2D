@@ -1,4 +1,3 @@
-using System;
 using BayatGames.SaveGameFree;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ public class MoneyManager: MonoBehaviour
     public static MoneyManager Instance;
     public int CurrentMoney { get; private set; }
     
-    private string MONEY_KEY = "MY_MONEY";
+    public string MONEY_KEY = "MY_MONEY";
 
     private void Awake()
     {
@@ -31,6 +30,10 @@ public class MoneyManager: MonoBehaviour
         {
             CurrentMoney -= amount;
             SaveGame.Save(MONEY_KEY, CurrentMoney);
+        }
+        else
+        {
+            Debug.Log("CurrentMoney: " + CurrentMoney + " is less than amount: " + amount);
         }
     }
 }

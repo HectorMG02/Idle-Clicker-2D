@@ -1232,7 +1232,7 @@ GameObject:
   - component: {fileID: 4589317668510041811}
   - component: {fileID: 935417576623521336}
   m_Layer: 0
-  m_Name: Benefits - Bar
+  m_Name: Profit - Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1308,7 +1308,7 @@ GameObject:
   - component: {fileID: 9069246624368377476}
   - component: {fileID: 1059213235899636776}
   m_Layer: 0
-  m_Name: Benefit (TMP)
+  m_Name: Profit (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1826,7 +1826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7730683426433145216}
   m_Layer: 0
-  m_Name: Benefits - Panel
+  m_Name: Profits - Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1865,7 +1865,7 @@ GameObject:
   - component: {fileID: 5234944169113157935}
   - component: {fileID: 2327649478034501293}
   m_Layer: 0
-  m_Name: Benefits - Container
+  m_Name: Profits - Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2067,7 +2067,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: -1826897583
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6215077156598060094
 MonoBehaviour:
@@ -2250,7 +2250,12 @@ MonoBehaviour:
   businessIcon: {fileID: 5268051146296024894}
   nameToBuyTMP: {fileID: 6802651198241457782}
   priceToBuyTMP: {fileID: 3209790263237226567}
-  benefitsPanel: {fileID: 6453161107119019108}
+  profitsPanel: {fileID: 6453161107119019108}
+  businessImage: {fileID: 2575243274812732303}
+  timerTMP: {fileID: 5597690242032405269}
+  businessNameTMP: {fileID: 4142760622727709486}
+  profitBar: {fileID: 935417576623521336}
+  profitTMP: {fileID: 1059213235899636776}
 --- !u!114 &6354362280008017665
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using BayatGames.SaveGameFree;
-using UnityEngine;
 
 public static class SaveManager
 {
@@ -15,8 +12,12 @@ public static class SaveManager
         for (int i = 0; i < businessQuantity; i++)
         {
             allBusinessData[i] = new BusinessData();
-            allBusinessData[i].bought = GameManager.Instance.AllBusiness[i].Bought;
-            allBusinessData[i].canBuy = GameManager.Instance.AllBusiness[i].CanBuy;
+            allBusinessData[i].Milestones = GameManager.Instance.AllBusiness[i].Milestones;
+            allBusinessData[i].Bought = GameManager.Instance.AllBusiness[i].Bought;
+            allBusinessData[i].CanBuy = GameManager.Instance.AllBusiness[i].CanBuy;
+            allBusinessData[i].TimeToGenerateProfit = GameManager.Instance.AllBusiness[i].TimeToGenerateProfit;
+            allBusinessData[i].Profit = GameManager.Instance.AllBusiness[i].Profit;
+            allBusinessData[i].ProfitToAdd = GameManager.Instance.AllBusiness[i].ProfitToAdd;
         }
         
         SaveGame.Save(SAVE_KEY, allBusinessData);

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InitialBusiness : MonoBehaviour
@@ -14,8 +11,7 @@ public class InitialBusiness : MonoBehaviour
     {
         _profit = initialProfit;
     }
-
-
+    
     public void GetProfit()
     {
         MoneyManager.Instance.AddMoney(_profit);

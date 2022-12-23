@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BusinessData : MonoBehaviour
 {
-    public bool bought;
-    public bool canBuy;
+    public int Milestones; 
+    public bool Bought; 
+    public bool CanBuy; 
+    public float TimeToGenerateProfit; 
+    public int Profit; 
+    public int ProfitToAdd;
 }
