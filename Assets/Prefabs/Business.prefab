@@ -2255,6 +2255,10 @@ MonoBehaviour:
   timerTMP: {fileID: 5597690242032405269}
   businessNameTMP: {fileID: 4142760622727709486}
   costUpdateTMP: {fileID: 1811575851601459712}
+  updateButton: {fileID: 1310677695200098146}
+  timerContainer: {fileID: 3128524144887695851}
+  updateNormalLevelSprite: {fileID: 1732001856, guid: b9aeb0dc5296a490a9191d01c6a28e8f, type: 3}
+  updateNewMilestoneLevelSprite: {fileID: -1960532276, guid: b9aeb0dc5296a490a9191d01c6a28e8f, type: 3}
   profitBar: {fileID: 935417576623521336}
   profitTMP: {fileID: 1059213235899636776}
   levelBar: {fileID: 1464991331408243993}
@@ -2562,8 +2566,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6354362280008017665}
-        m_TargetAssemblyTypeName: Business, Assembly-CSharp
+      - m_Target: {fileID: 7779426613242680249}
+        m_TargetAssemblyTypeName: BusinessUI, Assembly-CSharp
         m_MethodName: UpdateBusiness
         m_Mode: 1
         m_Arguments:

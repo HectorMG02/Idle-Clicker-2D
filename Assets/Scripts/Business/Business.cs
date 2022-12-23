@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Business : MonoBehaviour
 {
+    public static event Action<Business> EventNewMilestone;
+    
     [Header("Config")] [SerializeField] private int index;
 
     public int Milestones { get; private set; }
@@ -16,6 +18,7 @@ public class Business : MonoBehaviour
     public int CostUpdatePercentage { get; private set; }
     public float TimeToGenerateProfit { get; private set; }
     public bool NextLevelIsNewMilestone => (Level + 1) % 25 == 0;
+    public bool CanHideTimer => TimeToGenerateProfit <= 1;
 
     private float _timer;
     private float _timeMinutes;
@@ -129,7 +132,7 @@ public class Business : MonoBehaviour
 
         if (Level % 25 == 0)
         {
-           AddNewMilestone();
+           NextMilestone();
         }
         else
         {
@@ -144,7 +147,7 @@ public class Business : MonoBehaviour
         }
     }
 
-    private void AddNewMilestone()
+    private void NextMilestone()
     {
         Milestones++;
         CostUpdate *= 2;
@@ -153,6 +156,8 @@ public class Business : MonoBehaviour
         {
             TimeToGenerateProfit /= 2;
         }
+        
+        EventNewMilestone?.Invoke(this);
     }
 
     public int GetUpdateCost()
