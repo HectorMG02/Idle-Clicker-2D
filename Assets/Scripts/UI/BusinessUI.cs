@@ -23,10 +23,16 @@ public class BusinessUI : MonoBehaviour
     [SerializeField] private Image businessImage;
     [SerializeField] private TextMeshProUGUI timerTMP;
     [SerializeField] private TextMeshProUGUI businessNameTMP;
+    [SerializeField] private TextMeshProUGUI costUpdateTMP;
 
     [Header("Profit Progress Bar")]
     [SerializeField] private Image profitBar;
     [SerializeField] private TextMeshProUGUI profitTMP;
+    
+    [Header("Level Progress Bar")]
+    [SerializeField] private Image levelBar;
+    [SerializeField] private TextMeshProUGUI levelTMP;
+    
     
     private Business _myBusiness;
     
@@ -117,7 +123,11 @@ public class BusinessUI : MonoBehaviour
 
         timerTMP.text = _myBusiness.GetTimer();
         profitBar.fillAmount = _myBusiness.GetProfitBarValue();
-
+        costUpdateTMP.text = $"Update \n ${_myBusiness.GetUpdateCost()}";
+        
+        levelBar.fillAmount = _myBusiness.GetValueLevelBar();
+        levelTMP.text = _myBusiness.Level.ToString();
+        
         if (_myBusiness.TimeToGenerateProfit > 1)
         {
             profitTMP.text = $"${_myBusiness.Profit}";
@@ -156,7 +166,7 @@ public class BusinessUI : MonoBehaviour
             
             GameManager.Instance.SetNewBusiness(_myBusiness);
             MoneyManager.Instance.RemoveMoney(priceNewBusiness);
-            SaveManager.SaveBusiness();
+            SaveManager.SaveAllBusiness();
             
             EventBusinessBought?.Invoke(_myBusiness);
         }
@@ -165,5 +175,18 @@ public class BusinessUI : MonoBehaviour
     private void ActiveBusinessDataPanel(bool active)
     {
         profitsPanel.SetActive(active);
+    }
+
+    public void UpdateBusiness()
+    {
+        int currentMoney = MoneyManager.Instance.CurrentMoney;
+        int updateCost = _myBusiness.GetUpdateCost();
+
+        if (currentMoney >= updateCost)
+        {
+            MoneyManager.Instance.RemoveMoney(updateCost);
+            _myBusiness.UpdateBusiness();
+            SaveManager.SaveAllBusiness();
+        }
     }
 }

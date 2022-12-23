@@ -8,4 +8,8 @@ public class BusinessData : MonoBehaviour
     public float TimeToGenerateProfit; 
     public int Profit; 
     public int ProfitToAdd;
+
+    public int Level;
+    public int CostUpdate;
+    public int CostUpdatePercentage;
 }

@@ -63,6 +63,13 @@ public class GameManager : MonoBehaviour
             SaveGame.Delete(SaveManager.SAVE_KEY);
             SaveGame.Delete(KEY_PRICE_NEW_BUSINESS);
             SaveGame.Delete(MoneyManager.Instance.MONEY_KEY);
+            
+            SaveGame.Delete(KEY_PROFIT);
+            SaveGame.Delete(KEY_PROFIT_LEVEL_MULTIPLIER);
+            SaveGame.Delete(KEY_COST);
+            SaveGame.Delete(KEY_COST_UPDATE_PERCENTAGE);
+            SaveGame.Delete(KEY_TIME_TO_GENERATE_PROFIT);
+
             Debug.Log("Game Data Deleted");
         }
     }
@@ -141,8 +148,6 @@ public class GameManager : MonoBehaviour
         {
             _myTimeToGenerateProfit = SaveGame.Load<float>(KEY_TIME_TO_GENERATE_PROFIT);
         }
-        
-        
     }
 
     private void UpdateValuesNewBusiness()

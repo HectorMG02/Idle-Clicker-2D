@@ -300,12 +300,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6736332373473604693}
   - {fileID: 4922667670740519472}
   - {fileID: 3274689568637633430}
   - {fileID: 7984318171561815835}
   - {fileID: 6759220816533489424}
   - {fileID: 227875987232750741}
+  - {fileID: 6736332373473604693}
   m_Father: {fileID: 7730683426433145216}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -386,7 +386,7 @@ RectTransform:
   - {fileID: 6957652942165768313}
   - {fileID: 4354643159125192579}
   m_Father: {fileID: 189715396996799597}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -751,7 +751,7 @@ RectTransform:
   m_Children:
   - {fileID: 9163804147961338668}
   m_Father: {fileID: 189715396996799597}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -904,7 +904,7 @@ RectTransform:
   m_Children:
   - {fileID: 3919879520733247670}
   m_Father: {fileID: 189715396996799597}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1886,7 +1886,7 @@ RectTransform:
   - {fileID: 4620559061196710864}
   - {fileID: 3708579182369632082}
   m_Father: {fileID: 189715396996799597}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1962,7 +1962,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 189715396996799597}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2067,7 +2067,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: -1826897583
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &6215077156598060094
 MonoBehaviour:
@@ -2254,8 +2254,11 @@ MonoBehaviour:
   businessImage: {fileID: 2575243274812732303}
   timerTMP: {fileID: 5597690242032405269}
   businessNameTMP: {fileID: 4142760622727709486}
+  costUpdateTMP: {fileID: 1811575851601459712}
   profitBar: {fileID: 935417576623521336}
   profitTMP: {fileID: 1059213235899636776}
+  levelBar: {fileID: 1464991331408243993}
+  levelTMP: {fileID: 4318395036055086190}
 --- !u!114 &6354362280008017665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2470,7 +2473,7 @@ RectTransform:
   m_Children:
   - {fileID: 7188840410538559934}
   m_Father: {fileID: 189715396996799597}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -2558,4 +2561,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4915234803343884749}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6354362280008017665}
+        m_TargetAssemblyTypeName: Business, Assembly-CSharp
+        m_MethodName: UpdateBusiness
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
