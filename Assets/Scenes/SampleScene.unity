@@ -290,13 +290,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 578665439}
     m_Modifications:
+    - target: {fileID: 630102278691653109, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 797764753225230489, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2288567941731132154, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 2288567941731132154, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710173070901495728, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2833699547797640501, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_LocalScale.x
@@ -325,6 +337,10 @@ PrefabInstance:
     - target: {fileID: 7779426613242680231, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_Name
       value: Pharmacy Business
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779426613242680231, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7779426613242680248, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_RootOrder
@@ -8426,7 +8442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63e5a768ebb94011a490f132e1899fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debug: 1
   allBusiness:
   - {fileID: 1018015714}
   - {fileID: 240748986}
@@ -9407,6 +9423,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialProfit: 1
+  buyBusinessProfitMultiplier: 15
+  milestoneProfitMultiplier: 2
 --- !u!1 &1423574732
 GameObject:
   m_ObjectHideFlags: 0
@@ -9460,13 +9478,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 578665439}
     m_Modifications:
+    - target: {fileID: 797764753225230489, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2288567941731132154, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
     - target: {fileID: 2288567941731132154, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2833699547797640501, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_LocalScale.x
@@ -9495,6 +9517,10 @@ PrefabInstance:
     - target: {fileID: 7779426613242680231, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_Name
       value: Videogame Business
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779426613242680231, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7779426613242680248, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_RootOrder
@@ -9571,7 +9597,7 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     - target: {fileID: 2288567941731132154, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2833699547797640501, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_LocalScale.x
@@ -9579,7 +9605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6300857584855734179, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6354362280008017665, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: index
@@ -9608,6 +9634,10 @@ PrefabInstance:
     - target: {fileID: 7779426613242680231, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_Name
       value: Cafe Business
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779426613242680231, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7779426613242680248, guid: 0716afe7dae8643e484fa4223bab4ba4, type: 3}
       propertyPath: m_RootOrder
@@ -9698,7 +9728,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: -1826897583
-  m_SortingOrder: 20
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &2833699548789620922
 RectTransform:

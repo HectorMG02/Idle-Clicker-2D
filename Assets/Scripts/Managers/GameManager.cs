@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     [Header("Initial Profit Times")]
     [SerializeField] private float timeToGenerateProfit = 2f;
     [SerializeField] private float timeToGenerateProfitMultiplier = 2f;
+    
+    public int BusinessesPurchased { get; set; }
     public int PriceNewBusiness { get; private set; }
     public Business[] AllBusiness => allBusiness;
 
@@ -43,6 +45,9 @@ public class GameManager : MonoBehaviour
     private string KEY_COST = "COST";
     private string KEY_COST_UPDATE_PERCENTAGE = "COST_UPDATE_PERCENTAGE";
     private string KEY_TIME_TO_GENERATE_PROFIT = "TIME_TO_GENERATE_PROFIT";
+    private string KEY_BUSINESSES_PURCHASED = "BUSINESSES_PURCHASED";
+    
+    
     
     private void Awake()
     {
@@ -60,16 +65,7 @@ public class GameManager : MonoBehaviour
 
         if (debug)
         {
-            SaveGame.Delete(SaveManager.SAVE_KEY);
-            SaveGame.Delete(KEY_PRICE_NEW_BUSINESS);
-            SaveGame.Delete(MoneyManager.Instance.MONEY_KEY);
-            
-            SaveGame.Delete(KEY_PROFIT);
-            SaveGame.Delete(KEY_PROFIT_LEVEL_MULTIPLIER);
-            SaveGame.Delete(KEY_COST);
-            SaveGame.Delete(KEY_COST_UPDATE_PERCENTAGE);
-            SaveGame.Delete(KEY_TIME_TO_GENERATE_PROFIT);
-
+            SaveGame.DeleteAll();
             Debug.Log("Game Data Deleted");
         }
     }
@@ -91,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     public void SetNewBusiness(Business business)
     {
-        NewBusinessBought();
+        NewBusinessPurchased();
         business.Bought = true;
         business.CanBuy = false;
         
@@ -111,10 +107,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void NewBusinessBought()
+    private void NewBusinessPurchased()
     {
         PriceNewBusiness *= priceBusinessMultiplier;
         SaveGame.Save(KEY_PRICE_NEW_BUSINESS, PriceNewBusiness);
+        SaveGame.Save(KEY_BUSINESSES_PURCHASED, BusinessesPurchased);
     }
 
     private void LoadGameData()
@@ -147,6 +144,11 @@ public class GameManager : MonoBehaviour
         if (SaveGame.Exists(KEY_TIME_TO_GENERATE_PROFIT))
         {
             _myTimeToGenerateProfit = SaveGame.Load<float>(KEY_TIME_TO_GENERATE_PROFIT);
+        }
+        
+        if (SaveGame.Exists(KEY_BUSINESSES_PURCHASED))
+        {
+            BusinessesPurchased = SaveGame.Load<int>(KEY_BUSINESSES_PURCHASED);
         }
     }
 
