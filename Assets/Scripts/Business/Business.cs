@@ -6,7 +6,11 @@ public class Business : MonoBehaviour
     public static event Action<Business> EventNewMilestone;
     
     [Header("Config")] [SerializeField] private int index;
-
+    
+    [Header("VFX")]
+    [SerializeField] private Transform positionProfitText;
+    
+    
     public int Milestones { get; private set; }
     public int Level { get; private set; }
     public int Index => index;
@@ -100,6 +104,7 @@ public class Business : MonoBehaviour
             _timer = TimeToGenerateProfit;
 
             MoneyManager.Instance.AddMoney(Profit);
+            VFXManager.Instance.ShowText(positionProfitText, $"+ ${Profit.ToString()}");
         }
     }
 

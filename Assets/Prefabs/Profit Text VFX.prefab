@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4499568315079579136}
   - component: {fileID: 2798497788292469711}
   - component: {fileID: 60765170262550290}
+  - component: {fileID: -1897233375001593320}
   m_Layer: 0
-  m_Name: Profit Text FX
+  m_Name: Profit Text VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.04, y: -0.4045}
+  m_AnchoredPosition: {x: -0.039978027, y: -0.40447998}
   m_SizeDelta: {x: 0, y: -0.19099998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4499568315079579143
@@ -169,3 +170,16 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &-1897233375001593320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499568315079579138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14a096212e94cb2bfa80b56fe6637f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 4499568315079579136}

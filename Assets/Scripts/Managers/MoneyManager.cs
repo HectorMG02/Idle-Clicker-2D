@@ -1,16 +1,15 @@
 using BayatGames.SaveGameFree;
 using UnityEngine;
 
-public class MoneyManager: MonoBehaviour
+public class MoneyManager: Singleton<MoneyManager>
 {
-    public static MoneyManager Instance;
     public int CurrentMoney { get; private set; }
     
     public string MONEY_KEY = "MY_MONEY";
 
-    private void Awake()
+    protected override void Awake()
     {
-        Instance = this;
+        base.Awake();
         if (SaveGame.Exists(MONEY_KEY))
         {
             CurrentMoney = SaveGame.Load<int>(MONEY_KEY);

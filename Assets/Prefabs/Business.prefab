@@ -1891,6 +1891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+  positionProfitText: {fileID: 2899210176235568567}
 --- !u!1 &7779426613564796498
 GameObject:
   m_ObjectHideFlags: 0

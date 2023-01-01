@@ -1,13 +1,8 @@
 using BayatGames.SaveGameFree;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Instance;
-
-    [Header("Test")]
-    [SerializeField] private bool debug;
-    
     [Header("Business")]
     [SerializeField] private Business[] allBusiness;
     
@@ -28,6 +23,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timeToGenerateProfit = 2f;
     [SerializeField] private float timeToGenerateProfitMultiplier = 2f;
     
+    [Header("Test")]
+    [SerializeField] private bool debug;
+    
     public int BusinessesPurchased { get; set; }
     public int PriceNewBusiness { get; private set; }
     public Business[] AllBusiness => allBusiness;
@@ -46,12 +44,11 @@ public class GameManager : MonoBehaviour
     private string KEY_COST_UPDATE_PERCENTAGE = "COST_UPDATE_PERCENTAGE";
     private string KEY_TIME_TO_GENERATE_PROFIT = "TIME_TO_GENERATE_PROFIT";
     private string KEY_BUSINESSES_PURCHASED = "BUSINESSES_PURCHASED";
-    
-    
-    
-    private void Awake()
+
+
+    protected override void Awake()
     {
-        Instance = this;
+        base.Awake();
         PriceNewBusiness = priceFirstBusiness;
         
         _myProfit = initialProfit;

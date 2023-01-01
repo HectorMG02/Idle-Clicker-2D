@@ -10,6 +10,9 @@ public class InitialBusiness : MonoBehaviour
     [SerializeField] private int buyBusinessProfitMultiplier = 15;
     [SerializeField] private int milestoneProfitMultiplier = 2;
 
+    [Header("VFX")]
+    [SerializeField] private Transform positionProfitText;
+    
     private int _profit;
 
     private string KEY_INITIAL_PROFIT = "INITIAL_PROFIT";
@@ -55,5 +58,6 @@ public class InitialBusiness : MonoBehaviour
     public void GetProfit()
     {
         MoneyManager.Instance.AddMoney(_profit);
+        VFXManager.Instance.ShowText(positionProfitText, $"+ ${_profit.ToString()}");
     }
 }
