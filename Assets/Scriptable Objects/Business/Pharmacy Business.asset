@@ -15,6 +15,6 @@ MonoBehaviour:
   floor_1: {fileID: 21300000, guid: 338115d73145f47d7a7abfe9f314deee, type: 3}
   floor_2: {fileID: 21300000, guid: ef27fa3ec91fa46068bac05876ce2bdb, type: 3}
   roof: {fileID: 21300000, guid: ba5b54e8e92ed4184b22c593d7caf092, type: 3}
-  ID: pharmacyBusiness
+  id: businessPharmacy
   businessName: Pharmacy
   icon: {fileID: -1117470351, guid: b9458761e11cb4132ad72a6296c86e67, type: 3}

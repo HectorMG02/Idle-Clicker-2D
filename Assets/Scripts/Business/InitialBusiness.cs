@@ -1,7 +1,5 @@
-using System;
 using BayatGames.SaveGameFree;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class InitialBusiness : MonoBehaviour
 {

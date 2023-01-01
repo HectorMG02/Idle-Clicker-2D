@@ -9,7 +9,7 @@ public class BusinessSO : ScriptableObject
     public Sprite roof;
 
     [Header("Info")] 
-    public string ID;
+    public string id;
     public string businessName;
     public Sprite icon;
 

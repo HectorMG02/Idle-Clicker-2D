@@ -1,5 +1,4 @@
 using TMPro;
-using TreeEditor;
 using UnityEngine;
 
 public class TextVFX: MonoBehaviour
