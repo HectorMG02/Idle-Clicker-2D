@@ -18,7 +18,6 @@ public class QuestsManager : Singleton<QuestsManager>
     private void Start()
     {
         LoadQuests();
-        CloseQuestsPanel();
     }
 
 
@@ -43,12 +42,12 @@ public class QuestsManager : Singleton<QuestsManager>
 
     public void OpenQuestsPanel()
     {
-        questsPanel.transform.position = new Vector3(0, 0, 0);
+        questsPanel.transform.localPosition = Vector3.zero;
     }
     
     public void CloseQuestsPanel()
     {
-        questsPanel.transform.position = new Vector3(-15, 0, 0); 
+        questsPanel.transform.localPosition = Vector3.right * -1500;
     }
 
 

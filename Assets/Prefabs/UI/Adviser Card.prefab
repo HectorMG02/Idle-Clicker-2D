@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8246663697492906255}
   - component: {fileID: 8246663697492906254}
   - component: {fileID: 8246663697492906257}
+  - component: {fileID: 5485185634452098392}
   m_Layer: 0
   m_Name: Adviser Card
   m_TagString: Untagged
@@ -117,11 +118,25 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 8246663697492906254}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5485185634452098392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8246663697492906259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca6ea5a906564f1489b2515d3c6708f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 8246663697492906254}
+  selectorImage: {fileID: 8246663697818347491}
 --- !u!1 &8246663697818347493
 GameObject:
   m_ObjectHideFlags: 0

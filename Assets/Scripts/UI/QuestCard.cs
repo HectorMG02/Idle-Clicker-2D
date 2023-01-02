@@ -50,12 +50,12 @@ public class QuestCard : MonoBehaviour
         progressBarImage.fillAmount = (float) currentProgress / questGoal;
     }
 
-    public void SetCardData(QuestSO quest)
+    public void SetCardData(QuestSO questData)
     {
-        MyQuest = quest;
-        questTitleTMP.text = quest.questName;
-        questDescriptionTMP.text = quest.questDescription;
-        questRewardTMP.text = quest.reward.MoneyToText();
+        MyQuest = questData;
+        questTitleTMP.text = questData.questName;
+        questDescriptionTMP.text = questData.questDescription;
+        questRewardTMP.text = questData.reward.MoneyToText();
         
         
         if (SaveGame.Exists(MyQuest.CompletedKey))
