@@ -56,7 +56,7 @@ public class QuestCard : MonoBehaviour
         MyQuest = quest;
         questTitleTMP.text = quest.questName;
         questDescriptionTMP.text = quest.questDescription;
-        questRewardTMP.text = quest.reward.ToString();
+        questRewardTMP.text = quest.reward.MoneyToText();
         
         
         if (SaveGame.Exists(MyQuest.CompletedKey))

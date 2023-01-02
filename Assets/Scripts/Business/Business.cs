@@ -115,7 +115,7 @@ public class Business : MonoBehaviour
             _timer = TimeToGenerateProfit;
 
             MoneyManager.Instance.AddMoney(Profit);
-            VFXManager.Instance.ShowText(positionProfitText, $"+ ${Profit.ToString()}");
+            VFXManager.Instance.ShowText(positionProfitText, $"+ ${Profit.MoneyToText()}");
         }
     }
 

@@ -7,6 +7,6 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        currentMoneyTMP.text = $"${MoneyManager.Instance.CurrentMoney}";
+        currentMoneyTMP.text = $"${MoneyManager.Instance.CurrentMoney.MoneyToText()}";
     }
 }

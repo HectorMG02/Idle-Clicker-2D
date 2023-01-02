@@ -55,7 +55,6 @@ public class BusinessUI : MonoBehaviour
 
     public void ResponseBusinessBought(Business businessBought)
     {
-        Debug.Log("businessBought.Index: " + businessBought.Index + " and _myBusiness.Index: " + _myBusiness.Index);
         if (businessBought.Index + 1 == _myBusiness.Index)
         {
             ActiveBuyPanel(true);
@@ -158,18 +157,18 @@ public class BusinessUI : MonoBehaviour
 
         timerTMP.text = _myBusiness.GetTimer();
         profitBar.fillAmount = _myBusiness.GetProfitBarValue();
-        costUpdateTMP.text = $"Update \n ${_myBusiness.GetUpdateCost()}";
+        costUpdateTMP.text = $"Update \n ${_myBusiness.GetUpdateCost().MoneyToText()}";
         
         levelBar.fillAmount = _myBusiness.GetValueLevelBar();
         levelTMP.text = _myBusiness.Level.ToString();
         
         if (_myBusiness.TimeToGenerateProfit > 1)
         {
-            profitTMP.text = $"${_myBusiness.Profit}";
+            profitTMP.text = $"${_myBusiness.Profit.MoneyToText()}";
         }
         else
         {
-            profitTMP.text = $"${_myBusiness.Profit}/s";
+            profitTMP.text = $"${_myBusiness.Profit.MoneyToText()}/s";
         }
     }
     
@@ -186,7 +185,7 @@ public class BusinessUI : MonoBehaviour
     private void UpdateBuyPanel()
     {
         int price = GameManager.Instance.PriceNewBusiness;
-        priceToBuyTMP.text = $"Buy \n ${price}";
+        priceToBuyTMP.text = $"Buy \n ${price.MoneyToText()}";
     }
 
     public void BuyBusiness()
