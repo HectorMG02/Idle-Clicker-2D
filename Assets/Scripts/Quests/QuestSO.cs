@@ -1,7 +1,6 @@
 using System;
 using BayatGames.SaveGameFree;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public enum QuestType
 {
@@ -41,14 +40,14 @@ public class QuestSO : ScriptableObject
       set => SaveGame.Save(ProgressKey, value);
    }
    
-
-   public string CompletedKey => QUEST_COMPLETED + id;
-   public string CollectedKey => QUEST + id;
-   public string ProgressKey => PROGRESS + id;
    
    private string QUEST_COMPLETED = "COMPLETED";
    private string QUEST = "QUEST";
    private string PROGRESS = "PROGRESS";
+   
+   public string CompletedKey => QUEST_COMPLETED + id;
+   public string CollectedKey => QUEST + id;
+   public string ProgressKey => PROGRESS + id;
 
    public void UpdateQuest()
    {

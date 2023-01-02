@@ -1,4 +1,3 @@
-using System;
 using BayatGames.SaveGameFree;
 using TMPro;
 using UnityEngine;

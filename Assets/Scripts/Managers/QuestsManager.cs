@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using BayatGames.SaveGameFree;
 using UnityEngine;
