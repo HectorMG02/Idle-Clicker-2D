@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Quest improve videogame business
   m_EditorClassIdentifier: 
   questName: Improve videogame business
-  id: videogameBusiness
-  questObjective: 50
+  id: businessVideogame
+  questGoal: 50
   questType: 1
   questDescription: Click the videogame business 50 times
   reward: 50000

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Quest improve juice business
   m_EditorClassIdentifier: 
   questName: Improve juice business
-  id: juiceBusiness
-  questObjective: 25
+  id: businessJuice
+  questGoal: 25
   questType: 1
   questDescription: Click the juice business 25 times
   reward: 18000

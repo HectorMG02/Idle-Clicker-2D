@@ -57,5 +57,6 @@ public class InitialBusiness : MonoBehaviour
     {
         MoneyManager.Instance.AddMoney(_profit);
         VFXManager.Instance.ShowText(positionProfitText, $"+ ${_profit.ToString()}");
+        QuestsManager.Instance.AddProgress("initialBusiness");
     }
 }

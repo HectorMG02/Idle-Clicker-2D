@@ -518,8 +518,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 366.2, y: 10}
-  m_SizeDelta: {x: 200, y: 80}
+  m_AnchoredPosition: {x: -99.1, y: 12.1}
+  m_SizeDelta: {x: 280, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1042683827302324493
 CanvasRenderer:
@@ -602,7 +602,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1042683827302324482}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4831295372538064125}
+        m_TargetAssemblyTypeName: QuestCard, Assembly-CSharp
+        m_MethodName: CollectReward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1042683827824752175
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +744,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -556.1815, w: 107.37775}
+  m_margin: {x: 0, y: 0, z: -335.59875, w: 107.37775}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -749,6 +761,7 @@ GameObject:
   - component: {fileID: 1042683827907168557}
   - component: {fileID: 1042683827907168559}
   - component: {fileID: 1042683827907168556}
+  - component: {fileID: 4831295372538064125}
   m_Layer: 0
   m_Name: Quest Card
   m_TagString: Untagged
@@ -821,6 +834,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4831295372538064125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042683827907168546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a29c8e39a5a2493b9c7288391b954fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questTitleTMP: {fileID: 1042683828395522666}
+  questDescriptionTMP: {fileID: 1042683827824752169}
+  questRewardTMP: {fileID: 1042683827114164494}
+  questProgressTMP: {fileID: 1042683826766203308}
+  progressBarImage: {fileID: 1042683827919028056}
+  collectButton: {fileID: 1042683827302324481}
 --- !u!1 &1042683827919028062
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,8 +1022,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

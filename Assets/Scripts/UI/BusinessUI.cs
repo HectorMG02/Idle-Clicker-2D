@@ -207,6 +207,8 @@ public class BusinessUI : MonoBehaviour
         {
             MoneyManager.Instance.RemoveMoney(updateCost);
             _myBusiness.UpdateBusiness();
+            
+            QuestsManager.Instance.AddProgress(businessSo.id);
             SaveManager.SaveAllBusiness();
         }
     }

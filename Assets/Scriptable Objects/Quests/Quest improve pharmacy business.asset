@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Quest improve pharmacy business
   m_EditorClassIdentifier: 
   questName: Improve pharmacy business
-  id: pharmacyBusiness
-  questObjective: 30
+  id: businessPharmacy
+  questGoal: 30
   questType: 1
   questDescription: Click the pharmacy business 30 times
   reward: 28000

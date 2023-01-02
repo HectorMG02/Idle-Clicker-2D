@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Quest improve cafe business
   m_EditorClassIdentifier: 
   questName: Improve cafe business
-  id: cafeBusiness
-  questObjective: 28
+  id: businessCafe
+  questGoal: 28
   questType: 1
   questDescription: Click the cafe business 28 times
   reward: 24000
