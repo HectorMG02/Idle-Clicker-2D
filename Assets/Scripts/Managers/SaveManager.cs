@@ -1,4 +1,5 @@
 using BayatGames.SaveGameFree;
+using UnityEngine;
 
 public static class SaveManager
 {

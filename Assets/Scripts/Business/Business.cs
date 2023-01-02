@@ -66,6 +66,17 @@ public class Business : MonoBehaviour
         
         CostUpdate = businessData.CostUpdate;
         CostUpdatePercentage = businessData.CostUpdatePercentage;
+
+        if (Bought)
+        {
+            BusinessUI[] businessUIs = FindObjectsOfType<BusinessUI>();
+            
+            foreach (BusinessUI businessUI in businessUIs)
+            {
+                businessUI.ResponseBusinessBought(this);
+            }
+            
+        }
     }
 
     public void SetProfits(int profit, int profitLevelIncrement)

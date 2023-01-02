@@ -62,7 +62,6 @@ public class QuestSO : ScriptableObject
       {
          if(CurrentProgress >= questGoal)
          {
-            Debug.Log("completed");
             SaveGame.Save(CompletedKey, true);
             EventQuestCompleted?.Invoke(this);
             CurrentProgress = questGoal;

@@ -3,29 +3,27 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [Header("Business")]
-    [SerializeField] private Business[] allBusiness;
-    
-    [Header("Prices")]
-    [SerializeField] private int priceFirstBusiness = 10;
+    [Header("Business")] [SerializeField] private Business[] allBusiness;
+
+    [Header("Prices")] [SerializeField] private int priceFirstBusiness = 10;
     [SerializeField] private int priceBusinessMultiplier = 2;
 
-    [Header("Profits")]
-    [SerializeField] private int initialProfit = 2;
+    [Header("Profits")] [SerializeField] private int initialProfit = 2;
     [SerializeField] private int profitLevelMultiplier = 2;
     [SerializeField] private int newBusinessProfitIncrement = 400;
 
-    [Header("Initial Costs")]
-    [SerializeField] private int initialCost = 2;
+    [Header("Initial Costs")] [SerializeField]
+    private int initialCost = 2;
+
     [SerializeField] [Range(0, 100)] private int costUpdatePercentage = 2;
 
-    [Header("Initial Profit Times")]
-    [SerializeField] private float timeToGenerateProfit = 2f;
+    [Header("Initial Profit Times")] [SerializeField]
+    private float timeToGenerateProfit = 2f;
+
     [SerializeField] private float timeToGenerateProfitMultiplier = 2f;
-    
-    [Header("Test")]
-    [SerializeField] private bool debug;
-    
+
+    [Header("Test")] [SerializeField] private bool debug;
+
     public int BusinessesPurchased { get; set; }
     public int PriceNewBusiness { get; private set; }
     public Business[] AllBusiness => allBusiness;
@@ -35,8 +33,8 @@ public class GameManager : Singleton<GameManager>
     private int _myCost;
     private int _myCostUpdatePercentage;
     private float _myTimeToGenerateProfit;
-    
-    
+
+
     private string KEY_PRICE_NEW_BUSINESS = "PRICE_NEW_BUSINESS";
     private string KEY_PROFIT = "PROFIT";
     private string KEY_PROFIT_LEVEL_MULTIPLIER = "PROFIT_LEVEL_MULTIPLIER";
@@ -50,7 +48,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         PriceNewBusiness = priceFirstBusiness;
-        
+
         _myProfit = initialProfit;
         _myProfitLevelMultiplier = profitLevelMultiplier;
         _myCost = initialCost;
@@ -71,13 +69,11 @@ public class GameManager : Singleton<GameManager>
     {
         if (SaveGame.Exists(SaveManager.SAVE_KEY))
         {
-            BusinessData[] myBusiness = SaveGame.Load<BusinessData[]>(SaveManager.SAVE_KEY);
-            for (int i = 0; i < myBusiness.Length; i++)
+            BusinessData[] myBusinesses = SaveGame.Load<BusinessData[]>(SaveManager.SAVE_KEY);
+            
+            for (int i = 0; i < allBusiness.Length; i++)
             {
-                if (myBusiness[i] != null)
-                {
-                    allBusiness[i].LoadBusinessData(myBusiness[i]);   
-                }
+                allBusiness[i].LoadBusinessData(myBusinesses[i]);
             }
         }
     }
@@ -86,12 +82,11 @@ public class GameManager : Singleton<GameManager>
     {
         NewBusinessPurchased();
         business.Bought = true;
-        business.CanBuy = false;
-        
+
         business.SetProfits(_myProfit, _myProfitLevelMultiplier);
         business.SetCosts(_myCost, _myCostUpdatePercentage);
         business.SetProfitTimes(_myTimeToGenerateProfit);
-        
+
         CanBuyNextBusiness(business);
         UpdateValuesNewBusiness();
     }
@@ -106,46 +101,48 @@ public class GameManager : Singleton<GameManager>
 
     private void NewBusinessPurchased()
     {
+        BusinessesPurchased++;
         PriceNewBusiness *= priceBusinessMultiplier;
+
         SaveGame.Save(KEY_PRICE_NEW_BUSINESS, PriceNewBusiness);
         SaveGame.Save(KEY_BUSINESSES_PURCHASED, BusinessesPurchased);
     }
 
     private void LoadGameData()
     {
+        if (SaveGame.Exists(KEY_BUSINESSES_PURCHASED))
+        {
+            BusinessesPurchased = SaveGame.Load<int>(KEY_BUSINESSES_PURCHASED);
+        }
+
         if (SaveGame.Exists(KEY_PRICE_NEW_BUSINESS))
         {
             PriceNewBusiness = SaveGame.Load<int>(KEY_PRICE_NEW_BUSINESS);
         }
-        
+
         if (SaveGame.Exists(KEY_PROFIT))
         {
             _myProfit = SaveGame.Load<int>(KEY_PROFIT);
         }
-        
+
         if (SaveGame.Exists(KEY_PROFIT_LEVEL_MULTIPLIER))
         {
             _myProfitLevelMultiplier = SaveGame.Load<int>(KEY_PROFIT_LEVEL_MULTIPLIER);
         }
-        
+
         if (SaveGame.Exists(KEY_COST))
         {
             _myCost = SaveGame.Load<int>(KEY_COST);
         }
-        
+
         if (SaveGame.Exists(KEY_COST_UPDATE_PERCENTAGE))
         {
             _myCostUpdatePercentage = SaveGame.Load<int>(KEY_COST_UPDATE_PERCENTAGE);
         }
-        
+
         if (SaveGame.Exists(KEY_TIME_TO_GENERATE_PROFIT))
         {
             _myTimeToGenerateProfit = SaveGame.Load<float>(KEY_TIME_TO_GENERATE_PROFIT);
-        }
-        
-        if (SaveGame.Exists(KEY_BUSINESSES_PURCHASED))
-        {
-            BusinessesPurchased = SaveGame.Load<int>(KEY_BUSINESSES_PURCHASED);
         }
     }
 

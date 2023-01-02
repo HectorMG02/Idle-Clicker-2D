@@ -53,8 +53,9 @@ public class BusinessUI : MonoBehaviour
         Business.EventNewMilestone -= ResponseNewMilestone;
     }
 
-    private void ResponseBusinessBought(Business businessBought)
+    public void ResponseBusinessBought(Business businessBought)
     {
+        Debug.Log("businessBought.Index: " + businessBought.Index + " and _myBusiness.Index: " + _myBusiness.Index);
         if (businessBought.Index + 1 == _myBusiness.Index)
         {
             ActiveBuyPanel(true);
@@ -79,8 +80,8 @@ public class BusinessUI : MonoBehaviour
 
     private void Start()
     {
-        ShowBuyInformation();
         LoadBusinessInformation();
+        ShowBuyInformation();
     }
 
     private void Update()
@@ -96,15 +97,28 @@ public class BusinessUI : MonoBehaviour
 
     private void LoadBusinessInformation()
     {
-        floor_1.sprite = businessSo.floor_1;
-        floor_2.sprite = businessSo.floor_2;
-        roof.sprite = businessSo.roof;
+        if (_myBusiness.Bought)
+        {
+            ActiveBuyPanel(false);
+            ActiveBusinessDataPanel(true);
+            if (_myBusiness.CanHideTimer)
+            {
+                timerContainer.SetActive(false);
+            }
+        }
+        else
+        {
+            if (_myBusiness.Index == 0)
+            {
+                ActiveBuyPanel(true);
+            }
 
-        businessIcon.sprite = businessSo.icon;
-        nameToBuyTMP.text = businessSo.businessName;
-        
-        businessImage.sprite = businessSo.icon;
-        businessNameTMP.text = businessSo.businessName;
+            if (_myBusiness.CanBuy)
+            {
+                ActiveBuyPanel(true);
+                ActiveBusinessDataPanel(false);
+            }
+        }
     } 
 
     private void ShowBuyInformation()
@@ -187,8 +201,8 @@ public class BusinessUI : MonoBehaviour
             
             GameManager.Instance.SetNewBusiness(_myBusiness);
             MoneyManager.Instance.RemoveMoney(priceNewBusiness);
-            SaveManager.SaveAllBusiness();
             
+            SaveManager.SaveAllBusiness();
             EventBusinessBought?.Invoke(_myBusiness);
         }
     }
