@@ -1368,7 +1368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 58.700012, y: 126}
+  m_AnchoredPosition: {x: 37.899994, y: 126}
   m_SizeDelta: {x: -735.41, y: -1800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &453951948
@@ -10774,7 +10774,7 @@ MonoBehaviour:
   costUpdatePercentage: 2
   timeToGenerateProfit: 2
   timeToGenerateProfitMultiplier: 2
-  debug: 0
+  debug: 1
 --- !u!4 &513000899
 Transform:
   m_ObjectHideFlags: 0
@@ -11674,6 +11674,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2f69e7f900d714ca595ed4f1c1b49973, type: 2}
   - {fileID: 11400000, guid: 931613acf36d8438d9879803488d7f7b, type: 2}
   - {fileID: 11400000, guid: b39f6956342324cbc9c685a46776a10e, type: 2}
+  spinnerDuration: 2
+  buyAdviserTMP: {fileID: 453951948}
+  priceBuyAdviser: 10
 --- !u!1 &842745742
 GameObject:
   m_ObjectHideFlags: 0
@@ -11856,7 +11859,7 @@ GameObject:
   - component: {fileID: 897662213}
   - component: {fileID: 897662212}
   m_Layer: 0
-  m_Name: Add Adviser - Button
+  m_Name: New Adviser - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11926,7 +11929,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 897662213}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 830778926}
+        m_TargetAssemblyTypeName: AdviserManager, Assembly-CSharp
+        m_MethodName: BuyNewAdviser
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &897662213
 MonoBehaviour:
   m_ObjectHideFlags: 0

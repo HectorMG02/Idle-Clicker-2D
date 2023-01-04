@@ -1,3 +1,4 @@
+using System.Collections;
 using BayatGames.SaveGameFree;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,4 +24,25 @@ public class AdviserCard : MonoBehaviour
 
      _button.interactable = SaveGame.Exists(MyAdviser.KeyPurchased);
    }
+
+
+   public void UnlockCard()
+   {
+      _button.interactable = true;
+      MyAdviser.Purchased = true;
+   }
+
+   public void ShowSelector()
+   {
+      StartCoroutine(IESelector());
+   }
+
+
+   private IEnumerator IESelector()
+   {
+      selectorImage.enabled = true;
+      yield return new WaitForSeconds(0.2f);
+      selectorImage.enabled = false;
+   }
+   
 }
