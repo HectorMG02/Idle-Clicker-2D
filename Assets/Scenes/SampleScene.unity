@@ -11176,7 +11176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a346940441c8f480b81e4cc6885a3371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pricePerSecond: 100
+  pricePerSecond: 2
   offlineEarningPanel: {fileID: 936572927}
   earningTMP: {fileID: 610336351}
   absenceTimeTMP: {fileID: 892806687}
