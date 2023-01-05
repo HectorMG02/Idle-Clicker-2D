@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using BayatGames.SaveGameFree;
@@ -16,9 +17,38 @@ public class AdviserManager : Singleton<AdviserManager>
     [SerializeField] private TextMeshProUGUI buyAdviserTMP;
     [SerializeField] private int priceBuyAdviser;
 
+    private AdviserSlot _currentSlot;
     private bool _buyingRandom;
     private float _timeCheck;
     private List<AdviserCard> myCards = new List<AdviserCard>();
+
+
+    private void OnEnable()
+    {
+        AdviserSlot.EventAdviserSlotClicked += OnAdviserSlotClicked;
+        AdviserCard.EventCardSelected += OnAdviserCardSelected;
+    }
+    
+    private void OnDisable()
+    {
+        AdviserSlot.EventAdviserSlotClicked -= OnAdviserSlotClicked;
+        AdviserCard.EventCardSelected -= OnAdviserCardSelected;
+    }
+
+    private void OnAdviserSlotClicked(AdviserSlot selectedSlot)
+    {
+        _currentSlot = selectedSlot;
+    }
+
+    private void OnAdviserCardSelected(AdviserCard selectedCard)
+    {
+        if (_currentSlot != null)
+        {
+            _currentSlot.SetAdviser(selectedCard);
+            _currentSlot.ShowAdviserData();
+            _currentSlot = null;
+        }
+    }
 
     private void Start()
     {
@@ -79,8 +109,6 @@ public class AdviserManager : Singleton<AdviserManager>
     {
         advisersPanel.transform.localPosition = Vector3.right * 1500;
     }
-
-
 
 
 

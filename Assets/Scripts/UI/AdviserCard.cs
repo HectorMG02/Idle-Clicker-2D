@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using BayatGames.SaveGameFree;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AdviserCard : MonoBehaviour
 {
+   public static event Action<AdviserCard> EventCardSelected;
+   
    [Header("UI")] 
    [SerializeField] private Image icon;
    [SerializeField] private Image selectorImage;
@@ -35,6 +39,11 @@ public class AdviserCard : MonoBehaviour
    public void ShowSelector()
    {
       StartCoroutine(IESelector());
+   }
+
+   public void Click()
+   {
+      EventCardSelected?.Invoke(this);
    }
 
 

@@ -201,8 +201,9 @@ GameObject:
   - component: {fileID: 85055855}
   - component: {fileID: 85055854}
   - component: {fileID: 85055853}
+  - component: {fileID: 85055856}
   m_Layer: 0
-  m_Name: Adviser 2 - Button
+  m_Name: Adviser 2 - Slot Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,7 +272,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 85055854}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 85055856}
+        m_TargetAssemblyTypeName: AdviserSlot, Assembly-CSharp
+        m_MethodName: ClickSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &85055854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +323,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85055851}
   m_CullTransparentMesh: 1
+--- !u!114 &85055856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85055851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7764f9d9933c44edc9148164aeca783f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 85055854}
+  index: 1
 --- !u!1 &99868501
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,8 +911,9 @@ GameObject:
   - component: {fileID: 288880596}
   - component: {fileID: 288880595}
   - component: {fileID: 288880594}
+  - component: {fileID: 288880597}
   m_Layer: 0
-  m_Name: Adviser 1 - Button
+  m_Name: Adviser 1 - Slot Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -954,7 +982,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 288880595}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 288880597}
+        m_TargetAssemblyTypeName: AdviserSlot, Assembly-CSharp
+        m_MethodName: ClickSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &288880595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,6 +1033,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288880592}
   m_CullTransparentMesh: 1
+--- !u!114 &288880597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288880592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7764f9d9933c44edc9148164aeca783f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 288880595}
+  index: 0
 --- !u!1 &315915542
 GameObject:
   m_ObjectHideFlags: 0
@@ -12480,7 +12534,7 @@ GameObject:
   - component: {fileID: 1073623678}
   - component: {fileID: 1073623677}
   m_Layer: 0
-  m_Name: Activated advisers
+  m_Name: Activated advisers - Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14258,8 +14312,9 @@ GameObject:
   - component: {fileID: 1919515541}
   - component: {fileID: 1919515540}
   - component: {fileID: 1919515539}
+  - component: {fileID: 1919515542}
   m_Layer: 0
-  m_Name: Adviser 3 - Button
+  m_Name: Adviser 3 - Slot Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14328,7 +14383,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1919515540}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1919515542}
+        m_TargetAssemblyTypeName: AdviserSlot, Assembly-CSharp
+        m_MethodName: ClickSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1919515540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14367,6 +14434,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919515537}
   m_CullTransparentMesh: 1
+--- !u!114 &1919515542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919515537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7764f9d9933c44edc9148164aeca783f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 1919515540}
+  index: 2
 --- !u!1001 &2007109816
 PrefabInstance:
   m_ObjectHideFlags: 0
