@@ -4,18 +4,31 @@ using System.Collections.Generic;
 using BayatGames.SaveGameFree;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AdviserManager : Singleton<AdviserManager>
 {
-    [Header("Config")]
-    [SerializeField] private GameObject advisersPanel;
+    [Header("Config")] [SerializeField] private GameObject advisersPanel;
     [SerializeField] private AdviserCard adviserCardPrefab;
     [SerializeField] private Transform cardsContainer;
     [SerializeField] private AdviserSO[] advisers;
+    [SerializeField] private AdviserSlot[] slots;
 
-    [SerializeField] private float spinnerDuration = 2f;
+    [Header("Buy adviser config")] [SerializeField]
+    private float spinnerDuration = 2f;
     [SerializeField] private TextMeshProUGUI buyAdviserTMP;
     [SerializeField] private int priceBuyAdviser;
+    
+    [Header("Selected adviser info")]
+    [SerializeField] private TextMeshProUGUI adviserName;
+    [SerializeField] private TextMeshProUGUI adviserDescription;
+    [SerializeField] private Image iconInfo;
+
+    [Header("HUD adviser buttons")] [SerializeField]
+    private Image iconButton1;
+    [SerializeField] private Image iconButton2;
+    [SerializeField] private Image iconButton3;
+
 
     private AdviserSlot _currentSlot;
     private bool _buyingRandom;
@@ -28,7 +41,7 @@ public class AdviserManager : Singleton<AdviserManager>
         AdviserSlot.EventAdviserSlotClicked += OnAdviserSlotClicked;
         AdviserCard.EventCardSelected += OnAdviserCardSelected;
     }
-    
+
     private void OnDisable()
     {
         AdviserSlot.EventAdviserSlotClicked -= OnAdviserSlotClicked;
@@ -38,6 +51,11 @@ public class AdviserManager : Singleton<AdviserManager>
     private void OnAdviserSlotClicked(AdviserSlot selectedSlot)
     {
         _currentSlot = selectedSlot;
+
+        if (_currentSlot.MyAdviser != null)
+        {
+            ShowAdviserDescription();
+        }
     }
 
     private void OnAdviserCardSelected(AdviserCard selectedCard)
@@ -46,6 +64,10 @@ public class AdviserManager : Singleton<AdviserManager>
         {
             _currentSlot.SetAdviser(selectedCard);
             _currentSlot.ShowAdviserData();
+            
+            ShowAdviserPreviewButtons();
+            ShowAdviserDescription();
+            
             _currentSlot = null;
         }
     }
@@ -53,6 +75,7 @@ public class AdviserManager : Singleton<AdviserManager>
     private void Start()
     {
         LoadAdvisers();
+        LoadSlots();
         buyAdviserTMP.text = $"${priceBuyAdviser.MoneyToText()}";
     }
 
@@ -63,6 +86,50 @@ public class AdviserManager : Singleton<AdviserManager>
             AdviserCard card = Instantiate(adviserCardPrefab, cardsContainer);
             card.SetCardData(adviser);
             myCards.Add(card);
+        }
+    }
+
+    private void LoadSlots()
+    {
+        foreach (AdviserSlot slot in slots)
+        {
+            foreach (AdviserSO adviser in advisers)
+            {
+                if (SaveGame.Exists(slot.KeyAdviserSaved))
+                {
+                    if (slot.AdviserSaved == adviser.adviserName)
+                    {
+                        slot.MyAdviser = adviser;
+                        slot.ShowAdviserData();
+                        ShowAdviserPreviewButtons();
+                    }
+                }
+            }
+        }
+    }
+
+    private void ShowAdviserDescription()
+    {
+        iconInfo.sprite = _currentSlot.MyAdviser.icon;
+        adviserName.text = _currentSlot.MyAdviser.adviserName;
+        adviserDescription.text = _currentSlot.MyAdviser.description;
+    }
+    
+    public void ShowAdviserPreviewButtons()
+    {
+        if (slots[0].MyAdviser != null)
+        {
+            iconButton1.sprite = slots[0].MyAdviser.icon;
+        }
+
+        if (slots[1].MyAdviser != null)
+        {
+            iconButton2.sprite = slots[1].MyAdviser.icon;
+        }
+
+        if (slots[2].MyAdviser != null)
+        {
+            iconButton3.sprite = slots[2].MyAdviser.icon;
         }
     }
 
@@ -82,11 +149,11 @@ public class AdviserManager : Singleton<AdviserManager>
             StartCoroutine(IESelectRandomAdviserCard());
         }
     }
-    
+
     private List<AdviserCard> GetAvailableAdvisers()
     {
         List<AdviserCard> availableAdvisers = new List<AdviserCard>();
-        
+
         foreach (AdviserCard card in myCards)
         {
             AdviserSO adviserData = card.MyAdviser;
@@ -109,7 +176,6 @@ public class AdviserManager : Singleton<AdviserManager>
     {
         advisersPanel.transform.localPosition = Vector3.right * 1500;
     }
-
 
 
     private IEnumerator IESelectRandomAdviserCard()
@@ -137,7 +203,7 @@ public class AdviserManager : Singleton<AdviserManager>
                     _buyingRandom = false;
                     _timeCheck = 0;
                 }
-                
+
                 yield return new WaitForSeconds(0.2f);
             }
         }
@@ -146,6 +212,5 @@ public class AdviserManager : Singleton<AdviserManager>
             availableAdvisers[0].UnlockCard();
             _buyingRandom = false;
         }
-        
     }
 }

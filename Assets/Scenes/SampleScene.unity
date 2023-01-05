@@ -10941,7 +10941,7 @@ GameObject:
   - component: {fileID: 528781483}
   - component: {fileID: 528781482}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HUD - Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11728,9 +11728,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2f69e7f900d714ca595ed4f1c1b49973, type: 2}
   - {fileID: 11400000, guid: 931613acf36d8438d9879803488d7f7b, type: 2}
   - {fileID: 11400000, guid: b39f6956342324cbc9c685a46776a10e, type: 2}
+  slots:
+  - {fileID: 288880597}
+  - {fileID: 85055856}
+  - {fileID: 1919515542}
   spinnerDuration: 2
   buyAdviserTMP: {fileID: 453951948}
   priceBuyAdviser: 10
+  adviserName: {fileID: 1157734878}
+  adviserDescription: {fileID: 315915544}
+  iconInfo: {fileID: 337376313}
+  iconButton1: {fileID: 1800288948}
+  iconButton2: {fileID: 1270438949}
+  iconButton3: {fileID: 152538707}
 --- !u!1 &842745742
 GameObject:
   m_ObjectHideFlags: 0
