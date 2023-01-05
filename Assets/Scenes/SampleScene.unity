@@ -10828,7 +10828,7 @@ MonoBehaviour:
   costUpdatePercentage: 2
   timeToGenerateProfit: 2
   timeToGenerateProfitMultiplier: 2
-  debug: 1
+  debug: 0
 --- !u!4 &513000899
 Transform:
   m_ObjectHideFlags: 0

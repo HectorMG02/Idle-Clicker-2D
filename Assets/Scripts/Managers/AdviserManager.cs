@@ -122,7 +122,7 @@ public class AdviserManager : Singleton<AdviserManager>
     private void UpdateAvailableAdvisersText()
     {
 
-        availableAdvisersTMP.text = $"Advisers:\n{GetAvailableAdvisers().Count} / {advisers.Length}";
+        availableAdvisersTMP.text = $"Available\nAdvisers:\n{GetAvailableAdvisers().Count} / {advisers.Length}";
     }
     
     public void ShowAdviserPreviewButtons()
