@@ -11132,6 +11132,54 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &509812490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 509812491}
+  - component: {fileID: 509812492}
+  m_Layer: 0
+  m_Name: Offline Earning Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &509812491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509812490}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1175494646}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &509812492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509812490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a346940441c8f480b81e4cc6885a3371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pricePerSecond: 100
+  offlineEarningPanel: {fileID: 936572927}
+  earningTMP: {fileID: 610336351}
+  absenceTimeTMP: {fileID: 892806687}
 --- !u!1 &513000897
 GameObject:
   m_ObjectHideFlags: 0
@@ -11174,7 +11222,7 @@ MonoBehaviour:
   costUpdatePercentage: 2
   timeToGenerateProfit: 2
   timeToGenerateProfitMultiplier: 2
-  debug: 1
+  debug: 0
 --- !u!4 &513000899
 Transform:
   m_ObjectHideFlags: 0
@@ -13708,6 +13756,7 @@ Transform:
   - {fileID: 1082012707}
   - {fileID: 1090445117}
   - {fileID: 2106308078}
+  - {fileID: 509812491}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13794,7 +13843,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1205861875}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 509812492}
+        m_TargetAssemblyTypeName: OfflineEarningsManager, Assembly-CSharp
+        m_MethodName: CollectOfflineEarnings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1205861875
 MonoBehaviour:
   m_ObjectHideFlags: 0
