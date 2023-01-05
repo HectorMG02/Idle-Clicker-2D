@@ -157,18 +157,18 @@ public class BusinessUI : MonoBehaviour
 
         timerTMP.text = _myBusiness.GetTimer();
         profitBar.fillAmount = _myBusiness.GetProfitBarValue();
-        costUpdateTMP.text = $"Update \n ${_myBusiness.GetUpdateCost().MoneyToText()}";
+        costUpdateTMP.text = $"Update \n ${_myBusiness.GetUpdatePrice().MoneyToText()}";
         
         levelBar.fillAmount = _myBusiness.GetValueLevelBar();
         levelTMP.text = _myBusiness.Level.ToString();
         
         if (_myBusiness.TimeToGenerateProfit > 1)
         {
-            profitTMP.text = $"${_myBusiness.Profit.MoneyToText()}";
+            profitTMP.text = $"${_myBusiness.GetProfit().MoneyToText()}";
         }
         else
         {
-            profitTMP.text = $"${_myBusiness.Profit.MoneyToText()}/s";
+            profitTMP.text = $"${_myBusiness.GetProfit().MoneyToText()}/s";
         }
     }
     
@@ -214,7 +214,7 @@ public class BusinessUI : MonoBehaviour
     public void UpdateBusiness()
     {
         int currentMoney = MoneyManager.Instance.CurrentMoney;
-        int updateCost = _myBusiness.GetUpdateCost();
+        int updateCost = _myBusiness.GetUpdatePrice();
 
         if (currentMoney >= updateCost)
         {

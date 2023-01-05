@@ -12,6 +12,7 @@ public class InitialBusiness : MonoBehaviour
     [SerializeField] private Transform positionProfitText;
     
     private int _profit;
+    private int _profitTemp;
 
     private string KEY_INITIAL_PROFIT = "INITIAL_PROFIT";
 
@@ -55,8 +56,16 @@ public class InitialBusiness : MonoBehaviour
     
     public void GetProfit()
     {
-        MoneyManager.Instance.AddMoney(_profit);
-        VFXManager.Instance.ShowText(positionProfitText, $"+ ${_profit.MoneyToText()}");
+        _profitTemp = _profit;
+        
+        float utilityClick = AdviserManager.Instance.GetAdviserProfit(AdviserType.ClickUtility);
+        if (utilityClick != 0f)
+        {
+            _profitTemp *= (int) utilityClick;
+        }
+        
+        MoneyManager.Instance.AddMoney(_profitTemp);
+        VFXManager.Instance.ShowText(positionProfitText, $"+ ${_profitTemp.MoneyToText()}");
         QuestsManager.Instance.AddProgress("initialBusiness");
     }
 }

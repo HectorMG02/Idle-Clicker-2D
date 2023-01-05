@@ -18,7 +18,7 @@ public class Business : MonoBehaviour
     public bool CanBuy { get; set; }
     public int Profit { get; private set; }
     public int ProfitToAddAfterLevelUp { get; private set; }
-    public int CostUpdate { get; private set; }
+    public int UpdatePrice { get; private set; }
     public int CostUpdatePercentage { get; private set; }
     public float TimeToGenerateProfit { get; private set; }
     public bool NextLevelIsNewMilestone => (Level + 1) % 25 == 0;
@@ -64,7 +64,7 @@ public class Business : MonoBehaviour
         Profit = businessData.Profit;
         ProfitToAddAfterLevelUp = businessData.ProfitToAdd;
         
-        CostUpdate = businessData.CostUpdate;
+        UpdatePrice = businessData.CostUpdate;
         CostUpdatePercentage = businessData.CostUpdatePercentage;
 
         if (Bought)
@@ -87,7 +87,7 @@ public class Business : MonoBehaviour
 
     public void SetCosts(int costUpdate, int costUpdatePercent)
     {
-        CostUpdate = costUpdate;
+        UpdatePrice = costUpdate;
         CostUpdatePercentage = costUpdatePercent;
     }
 
@@ -114,9 +114,22 @@ public class Business : MonoBehaviour
             _timeSeconds = 0f;
             _timer = TimeToGenerateProfit;
 
-            MoneyManager.Instance.AddMoney(Profit);
-            VFXManager.Instance.ShowText(positionProfitText, $"+ ${Profit.MoneyToText()}");
+            MoneyManager.Instance.AddMoney(GetProfit());
+            VFXManager.Instance.ShowText(positionProfitText, $"+ ${GetProfit().MoneyToText()}");
         }
+    }
+
+    public int GetProfit()
+    {
+        int profitTemp = Profit;
+        float businessUtility = AdviserManager.Instance.GetAdviserProfit(AdviserType.BusinessUtility);
+
+        if (businessUtility != 0f)
+        {
+            profitTemp *= (int) businessUtility;
+        }
+
+        return profitTemp;
     }
 
     public string GetTimer()
@@ -152,8 +165,8 @@ public class Business : MonoBehaviour
         }
         else
         {
-            int extraCost = Mathf.CeilToInt(CostUpdate * (CostUpdatePercentage / 100f));
-            CostUpdate += extraCost;
+            int extraCost = Mathf.CeilToInt(UpdatePrice * (CostUpdatePercentage / 100f));
+            UpdatePrice += extraCost;
         }
 
         if (Milestones > 2) // the same for milestone 3, 4, 5, etc
@@ -166,7 +179,7 @@ public class Business : MonoBehaviour
     private void NextMilestone()
     {
         Milestones++;
-        CostUpdate *= 2;
+        UpdatePrice *= 2;
 
         if (TimeToGenerateProfit > 1)
         {
@@ -176,14 +189,25 @@ public class Business : MonoBehaviour
         EventNewMilestone?.Invoke(this);
     }
 
-    public int GetUpdateCost()
+    public int GetUpdatePrice()
     {
-        if (NextLevelIsNewMilestone)
+        int milestonePrice = UpdatePrice * 15;
+        int newUpdatePrice = UpdatePrice;
+
+        float discountUpdate = AdviserManager.Instance.GetAdviserProfit(AdviserType.UpdateDiscountUtility);
+        float discountMilestone = AdviserManager.Instance.GetAdviserProfit(AdviserType.MilestoneDiscountUtility);
+
+        if (discountUpdate != 0f)
         {
-            return CostUpdate * 15;
+            newUpdatePrice -= Mathf.CeilToInt(newUpdatePrice * discountUpdate);
         }
         
-        return CostUpdate;
+        if (discountMilestone != 0f)
+        {
+            milestonePrice -= Mathf.CeilToInt(milestonePrice * discountMilestone);
+        }
+        
+        return NextLevelIsNewMilestone ? milestonePrice : newUpdatePrice;
     }
     
 }

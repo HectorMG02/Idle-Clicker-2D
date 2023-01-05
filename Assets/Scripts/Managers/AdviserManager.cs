@@ -17,7 +17,9 @@ public class AdviserManager : Singleton<AdviserManager>
     [Header("Buy adviser config")] [SerializeField]
     private float spinnerDuration = 2f;
     [SerializeField] private TextMeshProUGUI buyAdviserTMP;
+    [SerializeField] private TextMeshProUGUI availableAdvisersTMP;
     [SerializeField] private int priceBuyAdviser;
+    [SerializeField] private Button buyAdviserButton;
     
     [Header("Selected adviser info")]
     [SerializeField] private TextMeshProUGUI adviserName;
@@ -76,8 +78,10 @@ public class AdviserManager : Singleton<AdviserManager>
     {
         LoadAdvisers();
         LoadSlots();
+        UpdateAvailableAdvisersText();
         buyAdviserTMP.text = $"${priceBuyAdviser.MoneyToText()}";
     }
+    
 
     private void LoadAdvisers()
     {
@@ -114,6 +118,12 @@ public class AdviserManager : Singleton<AdviserManager>
         adviserName.text = _currentSlot.MyAdviser.adviserName;
         adviserDescription.text = _currentSlot.MyAdviser.description;
     }
+
+    private void UpdateAvailableAdvisersText()
+    {
+
+        availableAdvisersTMP.text = $"Advisers:\n{GetAvailableAdvisers().Count} / {advisers.Length}";
+    }
     
     public void ShowAdviserPreviewButtons()
     {
@@ -133,6 +143,47 @@ public class AdviserManager : Singleton<AdviserManager>
         }
     }
 
+    public float GetAdviserProfit(AdviserType adviserType)
+    {
+        float value = 0;
+        
+        switch (adviserType)
+        {
+            case AdviserType.BusinessUtility:
+            case AdviserType.ClickUtility:
+                value = ActiveAdvisersProfits(adviserType);
+                break;
+                
+            case AdviserType.UpdateDiscountUtility:
+            case AdviserType.MilestoneDiscountUtility:
+                value = ActiveAdvisersProfits(adviserType);
+                value /= 100;
+                break;
+        }
+
+        return value;
+    }
+    
+    private float ActiveAdvisersProfits(AdviserType adviserType)
+    {
+        float sum = 0;
+
+        foreach (AdviserSlot slot in slots)
+        {
+            AdviserSO slotAdviser = slot.MyAdviser;
+            
+            if (slotAdviser != null)
+            {
+                if (slotAdviser.adviserType == adviserType)
+                {
+                    sum += slotAdviser.valueMultiplier;
+                }   
+            }
+        }
+        
+        return sum;
+    }
+
     public void BuyNewAdviser()
     {
         List<AdviserCard> availableAdvisers = GetAvailableAdvisers();
@@ -147,6 +198,7 @@ public class AdviserManager : Singleton<AdviserManager>
             MoneyManager.Instance.RemoveMoney(priceBuyAdviser);
             _buyingRandom = true;
             StartCoroutine(IESelectRandomAdviserCard());
+            UpdateAvailableAdvisersText();
         }
     }
 
@@ -180,6 +232,7 @@ public class AdviserManager : Singleton<AdviserManager>
 
     private IEnumerator IESelectRandomAdviserCard()
     {
+        buyAdviserButton.interactable = false;
         int index = 0;
         List<AdviserCard> availableAdvisers = GetAvailableAdvisers();
 
@@ -212,5 +265,7 @@ public class AdviserManager : Singleton<AdviserManager>
             availableAdvisers[0].UnlockCard();
             _buyingRandom = false;
         }
+        
+        buyAdviserButton.interactable = true;
     }
 }

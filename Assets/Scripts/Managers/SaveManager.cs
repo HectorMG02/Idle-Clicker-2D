@@ -20,7 +20,7 @@ public static class SaveManager
             allBusinessData[i].ProfitToAdd = GameManager.Instance.AllBusiness[i].ProfitToAddAfterLevelUp;
             
             allBusinessData[i].Level = GameManager.Instance.AllBusiness[i].Level;
-            allBusinessData[i].CostUpdate = GameManager.Instance.AllBusiness[i].CostUpdate;
+            allBusinessData[i].CostUpdate = GameManager.Instance.AllBusiness[i].UpdatePrice;
             allBusinessData[i].CostUpdatePercentage = GameManager.Instance.AllBusiness[i].CostUpdatePercentage;
         }
         
